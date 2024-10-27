@@ -5,9 +5,21 @@ const textOutput = document.querySelector('.textOutput')
 const inputHandler = () => {
     const inpNum = parseInt(inputNum.value)
     const txtInp = textInput.value
+    const regex = /\d+[\wа-яА-Я]+\./g;
 
     if (inpNum && txtInp.trim() !== '') {
         splitIntoBlocks(txtInp, inpNum)
+    }
+
+    if (txtInp.trim() !== '') {
+        let div = document.createElement('div')
+        div.className = 'OuterText'
+        textOutput.appendChild(div)
+        const match = regex.test(textInput.value)
+
+        if (match) {
+            div.innerHTML = textInput.value.replace(regex, '')
+        }
     }
 }
 

@@ -19,6 +19,10 @@ const inputHandler = () => {
 
         if (match) {
             div.innerHTML = textInput.value.replace(regex, '')
+            document.querySelector('.OuterText').addEventListener('click', (e) => {
+                    e.target.style.color = 'blue'
+                    navigator.clipboard.writeText(e.target.innerText)
+            })
         }
     }
 }

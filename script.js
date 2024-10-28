@@ -2,6 +2,11 @@ const inputNum = document.querySelector('.inputNum')
 const textInput = document.querySelector('.textInput')
 const textOutput = document.querySelector('.textOutput')
 
+const autoResize = () => {
+    textInput.style.height = 'auto';
+    textInput.style.height = textInput.scrollHeight + 'px';
+}
+
 const inputHandler = () => {
     const inpNum = parseInt(inputNum.value)
     const txtInp = textInput.value
@@ -29,6 +34,7 @@ const inputHandler = () => {
 
 inputNum.addEventListener('change', inputHandler)
 textInput.addEventListener('change', inputHandler)
+textInput.addEventListener('input', autoResize)
 
 function splitIntoBlocks(text, size) {
     textOutput.innerHTML = ''
@@ -61,7 +67,6 @@ function splitIntoBlocks(text, size) {
         count.innerHTML += [i + 1] + '</br>' + '</br>'
         div.innerHTML += blocks[i] + '</br>' + '</br>' + '</br>'
         // div.innerHTML += [i + 1] + '</br>' + '</br>' + blocks[i] + '</br>' + '</br>' + '</br>'
-        // console.log(div);
 
         document.querySelectorAll('.OuterText').forEach((item) => {
             item.addEventListener('click', () => {
